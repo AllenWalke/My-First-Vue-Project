@@ -2,10 +2,19 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+import Router from 'vue-router'
+import Apple from './components/apple.vue'
+import Banana from './components/banana.vue'
+Vue.use(Router)
 
-Vue.config.productionTip = false
 
+let router = new Router({
+  mode:'history',
+  routes:[
+    { path: '/apple/:color', component: Apple },
+    { path: '/banana', component: Banana }
+  ]
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
