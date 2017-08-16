@@ -1,29 +1,31 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>{{ $route.params.color }}</p>
-    <button @click="clickMe">sadasd</button>
-
+    <button @click="add">addOne</button>
+    <button @click="minus">addOne</button>
   </div>
-
 </template>
 <script>
-export default {
-  name:'hello',
-  data () {
-    return {
-      msg:'i am apple'
+  export default {
+    name: 'hello',
+    data() {
+      return {
+        msg: 'i am apple',
+        price:5
+      }
+    },
+    methods:{
+      add () {
+        this.$store.dispatch('increase',this.price)
+      },
+      minus () {
+        this.$store.dispatch('decrease',this.price)
+      }
     }
-  },
-  methods: {
-    clickMe () {
-      console.log(this.$route.params)
-    }
-
   }
-}
 </script>
 
 <style scoped>
+
 
 </style>
