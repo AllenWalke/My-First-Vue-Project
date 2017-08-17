@@ -19,14 +19,14 @@
       <div class="index-left-block lastest-news">
         <h2>最新消息</h2>
         <ul>
-          <li v-for="item in newList">
+          <li v-for="item in newsList">
             <a :href="item.url" class="new-item">{{ item.title }}</a>
           </li>
         </ul>
       </div>
     </div>
     <div class="index-right">
-      <slide-show :slides="slides" :inv="invTime"></slide-show>
+
       <div class="index-board-list">
         <div class="index-board-item" v-for="(item, index) in boardList" :class="[{'line-last' : index % 2 !== 0}, 'index-board-' + item.id]">
           <div class="index-board-item-inner">
@@ -44,6 +44,14 @@
 
 <script>
   export default {
+    created:function(){
+      this.$http.get('getList')
+      .then(function (data) {
+        console.log(data)
+      },function(err){
+        console.log(err)
+      })
+    },
     data() {
       return {
         productList: {
@@ -121,7 +129,7 @@
           saleout: false
         }
       ],
-        newList:[
+        newsList:[
           {
             title:'Allen Walker',
             url:'https://github.com/AllenWalke'

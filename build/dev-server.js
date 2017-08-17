@@ -13,7 +13,16 @@ var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = process.env.NODE_ENV === 'testing'
   ? require('./webpack.prod.conf')
   : require('./webpack.dev.conf')
+var jsonServer = require('json-server')
+const apiServer = jsonServer.create()
+const apiRouter = jsonServer.router('db.json')
+const middlewares = jsonServer.defaults()
 
+apiServer.use(middlewares)
+apiServer.use(apiRouter)
+apiServer.listen(port + 1, () => {
+  console.log('JSON Server is running')
+})
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
 // automatically open browser, if not set will be false
@@ -24,7 +33,7 @@ var proxyTable = config.dev.proxyTable
 
 var app = express()
 var compiler = webpack(webpackConfig)
-
+var jsonServer = new jsonServer()
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
   quiet: true

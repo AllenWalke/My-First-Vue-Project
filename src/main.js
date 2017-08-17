@@ -4,7 +4,9 @@ import Vue from 'vue'
 import Layout from './components/layout.vue'
 import VRouter from 'vue-router'
 import indexPage from './pages/index'
+import VueResource from 'vue-resource'
 Vue.use(VRouter)
+Vue.use(VueResource)
 
 let router = new VRouter({
   mode:'history',
