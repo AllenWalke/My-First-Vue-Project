@@ -56,6 +56,10 @@
           console.log(err)
         })
     },
+    methods:{
+
+
+    },
     data() {
       return {
         inv: 2000,

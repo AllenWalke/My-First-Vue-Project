@@ -1,0 +1,98 @@
+<template>
+  <div class="login-form">
+    <div class="g-form">
+      <div class="g-form-line">
+        <span class="g-form-label">用户名：</span>
+        <div class="g-form-input">
+          <input type="text" v-model="usernameModel" placeholder="请输入用户名">
+        </div>
+        <span class="g-form-error">{{userErrors.errorText}}</span>
+      </div>
+      <div class="g-form-line">
+        <span class="g-form-label">密码：</span>
+        <div class="g-form-input">
+          <input type="password" v-model="passwordModel" placeholder="请输入密码">
+        </div>
+        <span class="g-form-error">{{ passwordErrors.errorText }}</span>
+      </div>
+      <div class="g-form-line">
+        <div class="g-form-btn">
+          <a class="button" @click="onLogin">登录</a>
+        </div>
+      </div>
+      <p>{{ errorText }}</p>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        usernameModel: '',
+        passwordModel: '',
+        errorText: ''
+      }
+    },
+    computed: {
+      userErrors() {
+        let errorText, status
+        if (!/@/g.test(this.usernameModel)) {
+          errorText = '不包含@',
+            status = false
+        } else {
+          errorText = '',
+            status = true
+        }
+        if (!this.userFlag) {
+          errorText = '',
+            this.userFlag = true
+        }
+        return {
+          errorText,
+          status
+        }
+      },
+      passwordErrors() {
+        let errorText, status
+        if (!/^\w{8,16}$/g.test(this.passwordModel)) {
+          errorText = '密码位置在8-16位',
+            status = false
+        } else {
+          errorText = '',
+            status = true
+        }
+        if (!this.passwordFlag) {
+          errorText = '',
+            this.passwordFlag = true
+        }
+        return {
+          errorText,
+          status
+        }
+      }
+    },
+    methods: {
+      onLogin() {
+        if (!this.passwordErrors.status || !this.userErrors.status) {
+          this.errorText = '有选项未通过'
+        } else {
+          this.errorText = ''
+          this.$http.get('api/login')
+          .then((res) => {
+            this.$emit('has-log', res.data)
+          }, (error) => {
+            console.log(error)
+          })
+        }
+      }
+    }
+  }
+
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+
+
+</style>
