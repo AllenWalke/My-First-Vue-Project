@@ -66,22 +66,22 @@
         slides: [{
             src: require('../assets/slideShow/pic1.jpg'),
             title: 'xxx1',
-            href: 'detail/analysis'
+            href: 'detail/count'
           },
           {
             src: require('../assets/slideShow/pic2.jpg'),
             title: 'xxx2',
-            href: 'detail/count'
+            href: 'detail/forecast'
           },
           {
             src: require('../assets/slideShow/pic3.jpg'),
             title: 'xxx3',
-            href: 'http://xxx.xxx.com'
+            href: 'detail/analysis'
           },
           {
             src: require('../assets/slideShow/pic4.jpg'),
             title: 'xxx4',
-            href: 'detail/forecast'
+            href: 'detail/publish'
           }
         ],
         productList: {
@@ -132,26 +132,26 @@
         boardList: [{
             title: '开放产品',
             description: '开放产品是一款开放产品',
-            id: 'car',
-            toKey: 'analysis',
-            saleout: false
-          },
-          {
-            title: '品牌营销',
-            description: '品牌营销帮助你的产品更好地找到定位',
             id: 'earth',
             toKey: 'count',
             saleout: false
           },
           {
-            title: '使命必达',
+            title: '数据预测',
             description: '使命必达快速迭代永远保持最前端的速度',
-            id: 'loud',
+            id: 'car',
             toKey: 'forecast',
             saleout: true
           },
           {
-            title: '勇攀高峰',
+            title: '流量分析',
+            description: '品牌营销帮助你的产品更好地找到定位',
+            id: 'loud',
+            toKey: 'analysis',
+            saleout: false
+          },
+          {
+            title: '广告发布',
             description: '帮你勇闯高峰，到达事业的顶峰',
             id: 'hill',
             toKey: 'publish',
@@ -233,15 +233,15 @@
     padding-left: 120px;
   }
 
-  .index-board-car .index-board-item-inner {
+  .index-board-earth .index-board-item-inner {
     background: url(../assets/images/1.png) no-repeat;
   }
 
-  .index-board-loud .index-board-item-inner {
+  .index-board-car .index-board-item-inner {
     background: url(../assets/images/2.png) no-repeat;
   }
 
-  .index-board-earth .index-board-item-inner {
+  .index-board-loud .index-board-item-inner {
     background: url(../assets/images/3.png) no-repeat;
   }
 

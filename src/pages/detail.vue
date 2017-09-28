@@ -22,7 +22,7 @@
     data() {
       return {
         products: [{
-            name: '数据统计',
+            name: '开放产品',
             path: 'count',
             icon: require('../assets/images/1.png'),
             active: false
